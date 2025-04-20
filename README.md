@@ -101,6 +101,17 @@ Así se bajan las imágenes ya compiladas y se inicia todo en segundos.
 
 ---
 
+## Compatibilidad Multiplataforma
+
+Las imágenes Docker de este proyecto fueron construidas con `buildx` y publicadas con soporte para arquitecturas:
+
+- `linux/amd64` (Intel/AMD)
+- `linux/arm64` (Apple M1/M2)
+
+Esto garantiza que el sistema pueda ejecutarse correctamente en diferentes tipos de procesadores sin necesidad de recompilar las imágenes.
+
+---
+
 ## Presentado a 
 
 Ingeniero Carlos Andrés Díaz Santacruz, gracias por la guía en este proyecto.  

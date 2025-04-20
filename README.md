@@ -108,3 +108,6 @@ Equipo: Kevin Beltrán, Santiago Baena, Misael Gallo, Nelson Garzon, Carlos Baha
 
 ---
 
+## Nota sobre elaboración y referenciamiento
+
+El contenido de este archivo README.md fue elaborado con apoyo de la herramienta de inteligencia artificial ChatGPT (OpenAI), basándose en los requisitos específicos del proyecto académico y bajo la supervisión del equipo desarrollador.

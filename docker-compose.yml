@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+
+  backend:
+    image: kevinbelt/conversor_monedas_flask_ui-backend:latest
+    container_name: flask_backend
+    ports:
+      - "5050:5000"      # Host 5050 → contenedor 5000 (API Flask)
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app_net
+
+  visualizador:
+    image: kevinbelt/conversor_monedas_flask_ui-visualizador:latest
+    container_name: flask_ui
+    ports:
+      - "3000:5000"      # Host 3000 → contenedor 5000 (UI Flask)
+    depends_on:
+      - backend
+    networks:
+      - app_net
+
+  procesador:
+    image: kevinbelt/conversor_monedas_flask_ui-procesador:latest
+    container_name: tasa_processor
+    depends_on:
+      - redis
+    networks:
+      - app_net
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: conversiones
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app_net
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis_cache
+    ports:
+      - "6379:6379"
+    networks:
+      - app_net
+
+volumes:
+  pgdata:
+
+networks:
+  app_net:

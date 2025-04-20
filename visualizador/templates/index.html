@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversor de Monedas</title>
+</head>
+<body>
+    <h2>Conversor de Monedas</h2>
+    <form method="post">
+        <label>Moneda origen:</label>
+        <select name="origen">
+            <option>USD</option>
+            <option>EUR</option>
+            <option>COP</option>
+            <option>JPY</option>
+            <option>GBP</option>
+        </select><br><br>
+
+        <label>Moneda destino:</label>
+        <select name="destino">
+            <option>USD</option>
+            <option>EUR</option>
+            <option>COP</option>
+            <option>JPY</option>
+            <option>GBP</option>
+        </select><br><br>
+
+        <label>Monto:</label>
+        <input type="number" name="monto" step="0.01" required><br><br>
+
+        <button type="submit">Convertir</button>
+    </form>
+
+    {% if resultado %}
+        <p><strong>{{ resultado.monto }} {{ resultado.origen }}</strong> equivalen a 
+        <strong>{{ resultado.resultado | round(2) }} {{ resultado.destino }}</strong></p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red;">Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
